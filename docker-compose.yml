@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  docserver:
+    image: onlyoffice/4testing-documentserver-ee:6.4.0.124
+    ports:
+      - "6060:80"
+    volumes:
+      - /home/maxim/Downloads/3_sdkjsplugins:/var/www/onlyoffice/documentserver/sdkjs-plugins/plugins
+  nginx:
+    image: nginx:plugins
+    ports:
+      - "6061:80"
+    volumes:
+      - ./:/usr/share/nginx/html/

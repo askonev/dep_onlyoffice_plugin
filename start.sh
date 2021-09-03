@@ -1,0 +1,1 @@
+/home/maxim/Downloads/3_sdkjsplugins/lib/start.sh
