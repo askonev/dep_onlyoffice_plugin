@@ -1,10 +1,11 @@
 #!/bin/bash
 source lib/stopwatcher.sh
 
-PLUGIN_NAME=add-textbaustein-plugin
+PLUGIN_NAME=
 PLUGIN_DIR_PATH=plugins_list/$PLUGIN_NAME
 DIR=/var/www/onlyoffice/documentserver/sdkjs-plugins/plugins
 CONTAINER=3_sdkjsplugins_docserver_1
+HOST_IP=http://192.168.0.178:6060
 
 case "$1" in
 -d)
@@ -27,6 +28,7 @@ else
     for file in $(find $PLUGIN_DIR_PATH -name '*.gz');
       do
         rm $file;
+        tput setaf 2; echo "*.gz deleted"; printf '\e[m'
       done
 fi
 
@@ -48,4 +50,4 @@ docker-compose restart docserver
 stopwatcher 70
 tput setaf 2; echo "Plugin exist: true"; printf '\e[m' # colorize log green
 
-google-chrome --incognito --new-window http://192.168.0.178:6060/example/
+google-chrome --incognito --new-window $HOST_IP/example/
