@@ -22,8 +22,8 @@ shift
 
 # check .gz files into plugin
 ls -1 ./$PLUGIN_DIR_PATH/*.gz &> start.log
-errls=$?
-if [ $errls -eq 2 ]; then
+
+if [ $? -eq 2 ]; then
     tput setaf 3; echo  "No such file or directory"; printf '\e[m'
 else
     for file in $(find $PLUGIN_DIR_PATH -name '*.gz');
@@ -35,7 +35,8 @@ fi
 
 # Move plugins inside document server
 docker-compose exec -w $DIR docserver cp -r $PLUGIN_DIR_PATH $DIR/../ 2>> start.log
-if [[ $? -eq "0" ]]
+
+if [[ $? -eq 0 ]]
 then
   tput setaf 2; echo  "Plugin dir copied"; printf '\e[m'
 else
