@@ -1,12 +1,13 @@
 #!/bin/bash
 source lib/stopwatcher.sh
 
-PLUGIN_NAME=
+PLUGIN_NAME=helloworld_custom
 PLUGIN_DIR_PATH=plugins_list/$PLUGIN_NAME
 DIR=/var/www/onlyoffice/documentserver/sdkjs-plugins/plugins
 CONTAINER=3_sdkjsplugins_docserver_1
 HOST_IP=http://192.168.0.178:6060
 
+#if "case" = "param" then used corresponding code of block
 case "$1" in
 -d)
   docker-compose up -d docserver
@@ -16,10 +17,10 @@ case "$1" in
   docker exec $CONTAINER sudo sed 's,autostart=false,autostart=true,' -i /etc/supervisor/conf.d/ds-example.conf
 ;;
 esac
-shift # shifts positional parameters to the left
+# Shifts positional parameters to the left
+shift
 
-# check gz files into plugin
-
+# check .gz files into plugin
 ls -1 ./$PLUGIN_DIR_PATH/*.gz &> start.log
 errls=$?
 if [ $errls -eq 2 ]; then
