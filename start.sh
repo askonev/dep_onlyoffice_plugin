@@ -2,7 +2,7 @@
 
 source lib/stopwatcher.sh
 
-PLUGIN_NAME=paste-html-example
+PLUGIN_NAME=
 
 DOCSERVER_DIR_FOR_PLUGINS=/var/www/onlyoffice/documentserver/sdkjs-plugins/plugins
 CONTAINER_NAME=3_sdkjsplugins_docserver_1
@@ -32,6 +32,8 @@ else
         tput setaf 2; echo "*.gz deleted"; printf '\e[m'
       done
 fi
+
+exit 1
 
 # Move plugins inside document server
 docker-compose exec -w $DOCSERVER_DIR_FOR_PLUGINS docserver cp -r ./$PLUGIN_NAME .. 2>> start.log
