@@ -2,7 +2,7 @@
 
 source lib/stopwatcher.sh
 
-PLUGIN_NAME=
+PLUGIN_NAME=onMethodReturn
 
 DOCSERVER_DIR_FOR_PLUGINS=/var/www/onlyoffice/documentserver/sdkjs-plugins/plugins
 CONTAINER_NAME=3_sdkjsplugins_docserver_1
@@ -22,18 +22,16 @@ esac
 shift
 
 # check .gz files into plugin
-ls -1 ./plugins_list/$PLUGIN_NAME/*.gz &> start.log
+ls -1 ./plugins_list/$PLUGIN_NAME/*.gz &> /dev/null
 if [ $? -eq 2 ]; then
-    tput setaf 3; echo  "No such file or directory"; printf '\e[m'
+    tput setaf 3; echo  "*.gz deleted"; printf '\e[m'
 else
     for file in $(find ./plugins_list/$PLUGIN_NAME -name '*.gz');
       do
-        rm $file;
-        tput setaf 2; echo "*.gz deleted"; printf '\e[m'
+        rm $file
       done
+    tput setaf 2; echo "*.gz deleted"; printf '\e[m'
 fi
-
-exit 1
 
 # Move plugins inside document server
 docker-compose exec -w $DOCSERVER_DIR_FOR_PLUGINS docserver cp -r ./$PLUGIN_NAME .. 2>> start.log
