@@ -23,7 +23,7 @@ esac
 shift
 
 # check .gz files into plugin
-ls -1 ./plugins_list/$PLUGIN_NAME/*.gz &> /dev/null
+ls ./plugins_list/$PLUGIN_NAME/*.gz &> /dev/null
 remove_gz_in_dir $?
 
 # Move plugins inside document server
