@@ -13,3 +13,10 @@ function remove_gz_in_dir {
   fi
 
 }
+
+function start_document_server_example {
+
+    docker-compose exec docserver sudo supervisorctl start ds:example
+    docker-compose exec docserver sudo sed 's,autostart=false,autostart=true,' -i /etc/supervisor/conf.d/ds-example.conf
+
+}
