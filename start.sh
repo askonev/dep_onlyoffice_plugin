@@ -6,7 +6,7 @@ source lib/plugin_starter_helper.sh
 PLUGIN_NAME=helloworld_paste_html
 
 DOCSERVER_DIR_FOR_PLUGINS=/var/www/onlyoffice/documentserver/sdkjs-plugins/plugins
-HOST_IP=http://192.168.0.178:6060
+HOST_IP=$(get_host_ip)
 
 # if "case" = "param" then used corresponding code of block
 case "$1" in
@@ -33,4 +33,4 @@ docker-compose restart docserver
 stopwatcher 70
 tput setaf 2; echo "Plugin exist: true"; printf '\e[m' # colorize log green
 
-google-chrome --incognito --new-window $HOST_IP/example/
+google-chrome --incognito --new-window http://$HOST_IP:6060/example/
