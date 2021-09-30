@@ -33,10 +33,8 @@ else
   exit 1
 fi
 
-# update with new plugin
+# For new plugin need restart docserver
 docker-compose restart docserver
-# docker-compose exec docserver supervisorctl restart all
-# docker-compose exec docserver supervisorctl restart ds:docservice
 
 stopwatcher 70
 tput setaf 2; echo "Plugin exist: true"; printf '\e[m' # colorize log green
