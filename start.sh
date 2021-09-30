@@ -19,7 +19,7 @@ esac
 # Shifts positional parameters to the left
 shift
 
-# check .gz files into plugin
+# check .gz files in plugin
 ls ./plugins_list/$PLUGIN_NAME/*.gz &> /dev/null
 remove_gz_in_dir $?
 
