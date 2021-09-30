@@ -3,7 +3,7 @@
 source lib/stopwatcher.sh
 source lib/plugin_starter_helper.sh
 
-PLUGIN_NAME=helloworld_paste_html
+PLUGIN_NAME=
 
 DOCSERVER_DIR_FOR_PLUGINS=/var/www/onlyoffice/documentserver/sdkjs-plugins/plugins
 HOST_IP=$(get_host_ip)
