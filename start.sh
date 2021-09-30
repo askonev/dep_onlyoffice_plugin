@@ -25,13 +25,7 @@ remove_gz_in_dir $?
 
 # Move plugins inside document server
 docker-compose exec -w $DOCSERVER_DIR_FOR_PLUGINS docserver cp -r ./$PLUGIN_NAME .. 2>> err.log
-if [[ $? -eq 0 ]]
-then
-  tput setaf 2; echo  "Plugin dir copied"; printf '\e[m'
-else
-  tput setaf 1; echo  "Docker container doesn't exist."; printf '\e[m'
-  exit 1
-fi
+check_for_successful_copying $?
 
 # For new plugin need restart docserver
 docker-compose restart docserver
