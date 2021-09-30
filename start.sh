@@ -24,7 +24,7 @@ ls ./plugins_list/$PLUGIN_NAME/*.gz &> /dev/null
 remove_gz_in_dir $?
 
 # Move plugins inside document server
-docker-compose exec -w $DOCSERVER_DIR_FOR_PLUGINS docserver cp -r ./$PLUGIN_NAME .. 2>> start.log
+docker-compose exec -w $DOCSERVER_DIR_FOR_PLUGINS docserver cp -r ./$PLUGIN_NAME .. 2>> err.log
 if [[ $? -eq 0 ]]
 then
   tput setaf 2; echo  "Plugin dir copied"; printf '\e[m'
