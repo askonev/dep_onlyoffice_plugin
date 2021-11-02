@@ -5,7 +5,7 @@ services:
     ports:
       - "6060:80"
     volumes:
-      - /home/maxim/all_project/starter_sdkjsplugins/plugins_list:/var/www/onlyoffice/documentserver/sdkjs-plugins/plugins
+      - /home/maxim/Main_project/starter_sdkjsplugins/plugins_list:/var/www/onlyoffice/documentserver/sdkjs-plugins/plugins
   nginx:
     image: nginx:plugins
     ports:
