@@ -1,11 +1,11 @@
 version: '3.9'
 services:
   docserver:
-    image: onlyoffice/4testing-documentserver-ee:latest
+    image: onlyoffice/4testing-documentserver-de:${DOCSERVER_VERSION}
     ports:
       - "6060:80"
     volumes:
-      - /home/justask/Bash_project/starter_sdkjsplugins/plugins_list:/var/www/onlyoffice/documentserver/sdkjs-plugins/plugins
+      - ${PATH_TO_PLUGINS}:/var/www/onlyoffice/documentserver/sdkjs-plugins/plugins
   nginx:
     image: nginx:plugins
     ports:
