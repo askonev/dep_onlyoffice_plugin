@@ -35,6 +35,9 @@ function check_for_successful_copying {
 
 function get_host_ip {
 
-  ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | grep -v '172.*.*.*'
+  ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | \
+        grep -Eo '([0-9]*\.){3}[0-9]*' | \
+        grep -v '127.0.0.1' | \
+        grep -Eo '172.([0-9]*\.){2}([0-9]{3,})|192.([0-9]*\.){2}([0-9]{3,})'
 
 }
