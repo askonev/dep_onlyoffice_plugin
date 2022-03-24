@@ -30,7 +30,7 @@ check_for_successful_copying $?
 # For new plugin need restart docserver
 docker-compose restart docserver
 
-stopwatcher 70
+stopwatcher 65
 tput setaf 2; echo "Plugin exist: true"; printf '\e[m' # colorize log green
 
-google-chrome --incognito --new-window http://$HOST_IP:6060/example/
+google-chrome --new-window http://$HOST_IP:6060/example/
