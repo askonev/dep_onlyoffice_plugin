@@ -5,14 +5,14 @@ source lib/plugin_starter_helper.sh
 
 PLUGIN_NAME=helloworld
 
-DOCSERVER_DIR_FOR_PLUGINS=/var/www/onlyoffice/documentserver/sdkjs-plugins/plugins
+DOCSERVER_DIR_FOR_PLUGINS=/var/www/onlyoffice/documentserver/sdkjs-plugins/
 HOST_IP=$(get_host_ip)
 
 # if "case" = "param" then used corresponding code of block
 case "$1" in
 -d)
   docker-compose up -d docserver
-  stopwatcher 90
+  stopwatcher 120
   start_document_server_example
 ;;
 esac
@@ -23,14 +23,15 @@ shift
 ls ./plugins_list/$PLUGIN_NAME/*.gz &> /dev/null
 remove_gz_in_dir $?
 
-# Move plugins inside document server
-docker-compose exec -w $DOCSERVER_DIR_FOR_PLUGINS docserver cp -r ./$PLUGIN_NAME .. 2>> err.log
+# Copy plugins inside document server
+docker cp ./plugins_list/$PLUGIN_NAME "$(docker-compose ps -q docserver)":$DOCSERVER_DIR_FOR_PLUGINS
 check_for_successful_copying $?
 
 # For new plugin need restart docserver
 docker-compose restart docserver
-
-stopwatcher 65
+stopwatcher 70
+#docker-compose exec -T docserver supervisorctl restart all
 tput setaf 2; echo "Plugin exist: true"; printf '\e[m' # colorize log green
 
-google-chrome --new-window http://$HOST_IP:6060/example/
+# If google chrome exist
+google-chrome --new-window http://$HOST_IP:6060/example/ &> /dev/null
