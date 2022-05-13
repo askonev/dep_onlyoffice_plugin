@@ -10,7 +10,8 @@ HOST_IP=$(get_host_ip)
 
 # if "case" = "param" then used corresponding code of block
 case "$1" in
--d)
+--docker)
+  # start with onlyoffice docker
   docker-compose up -d docserver
   stopwatcher 120
   start_document_server_example
