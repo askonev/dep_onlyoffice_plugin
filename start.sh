@@ -35,4 +35,4 @@ stopwatcher 70
 tput setaf 2; echo "Plugin exist: true"; printf '\e[m' # colorize log green
 
 # If google chrome exist
-google-chrome --new-window http://$HOST_IP:6060/example/ &> /dev/null
+google-chrome --new-window http://"$HOST_IP":6060/example/ &> /dev/null
