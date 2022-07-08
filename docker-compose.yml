@@ -4,9 +4,3 @@ services:
     image: onlyoffice/4testing-documentserver-ee:${DOCSERVER_VERSION}
     ports:
       - "6060:80"
-  nginx:
-    image: nginx:plugins
-    ports:
-      - "6061:80"
-    volumes:
-      - ./:/usr/share/nginx/html/
