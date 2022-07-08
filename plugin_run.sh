@@ -29,9 +29,12 @@ docker cp ./plugins_list/$PLUGIN_NAME "$(docker-compose ps -q docserver)":$DOCSE
 check_for_successful_copying $?
 
 # For new plugin need restart docserver
-docker-compose restart docserver
-stopwatcher 70
-#docker-compose exec -T docserver supervisorctl restart all
+# docker-compose restart docserver
+# stopwatcher 70
+
+docker-compose exec -T docserver supervisorctl restart all
+docker-compose exec -T docserver service nginx restart
+
 tput setaf 2; echo "Plugin exist: true"; printf '\e[m' # colorize log green
 
 # If google chrome exist
