@@ -15,7 +15,7 @@ Bash script for installing and updating the plugin into the document server
 
 2. Install the folder with the plugin in the directory
 
-    `./plugins_list`
+    `./asset`
 
    or use the script 
  

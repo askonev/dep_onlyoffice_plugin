@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PLUGIN_NAME="helloworld"
-DS_PLUGINS_DIR="../plugins_list"
+DS_PLUGINS_DIR="../asset"
 
 function cloning_plugin {
 
