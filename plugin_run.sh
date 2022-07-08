@@ -28,14 +28,16 @@ remove_gz_in_dir $?
 docker cp ./plugins_list/$PLUGIN_NAME "$(docker-compose ps -q docserver)":$DOCSERVER_DIR_FOR_PLUGINS
 check_for_successful_copying $?
 
-# For new plugin need restart docserver
-# docker-compose restart docserver
-# stopwatcher 70
-
-docker-compose exec -T docserver supervisorctl restart all
+# Update docserver services
+docker-compose exec -T docserver supervisorctl restart all && \
 docker-compose exec -T docserver service nginx restart
 
-tput setaf 2; echo "Plugin exist: true"; printf '\e[m' # colorize log green
+# shellcheck disable=SC2181
+if [ $? -eq 0 ]; then
+  tput setaf 2; echo "Plugin is installed"; printf '\e[m' # colorize log green
 
-# If google chrome exist
-google-chrome --incognito --new-window http://"$HOST_IP":6060/example/ &> /dev/null
+  google-chrome --incognito --new-window http://"$HOST_IP":6060/example/ &> /dev/null
+else
+  tput setaf 1; echo  "Error when updating services"; printf '\e[m'  # colorize log red
+  exit 1
+fi
