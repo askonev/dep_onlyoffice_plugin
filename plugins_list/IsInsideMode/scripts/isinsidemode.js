@@ -48,8 +48,14 @@
         };
     };
 
-    window.Asc.plugin.button = function(id)
-    {
-    };
+    _plugin.onMethodReturn = function (returnValue) {
+        if (_plugin.info.methodName === 'AddContentControl') {
+            console.info(returnValue);
+            console.log(_plugin.info)
+            debugger
+        }
+    }
+
+    _plugin.button = function(id) {};
 
 })(window, undefined);
