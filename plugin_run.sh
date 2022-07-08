@@ -21,11 +21,11 @@ esac
 shift
 
 # check .gz files in plugin
-ls ./plugins_list/$PLUGIN_NAME/*.gz &> /dev/null
+ls ./asset/$PLUGIN_NAME/*.gz &> /dev/null
 remove_gz_in_dir $?
 
 # Copy plugins inside document server
-docker cp ./plugins_list/$PLUGIN_NAME "$(docker-compose ps -q docserver)":$DOCSERVER_DIR_FOR_PLUGINS
+docker cp ./asset/$PLUGIN_NAME "$(docker-compose ps -q docserver)":$DOCSERVER_DIR_FOR_PLUGINS
 check_for_successful_copying $?
 
 # Update docserver services

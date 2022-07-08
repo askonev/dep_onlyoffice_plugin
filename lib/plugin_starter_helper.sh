@@ -6,9 +6,9 @@ function remove_gz_in_dir {
       tput setaf 3; echo  "*.gz deleted"; printf '\e[m'
   else
       # shellcheck disable=SC2044
-      for file in $(find ./plugins_list/"$PLUGIN_NAME" -name '*.gz');
+      for file in $(find ./asset/"$PLUGIN_NAME" -name '*.gz');
         do
-          rm $file
+          rm "$file"
         done
       tput setaf 2; echo "*.gz deleted"; printf '\e[m'
   fi
@@ -24,6 +24,7 @@ function start_document_server_example {
 
 function check_for_successful_copying {
 
+  # shellcheck disable=SC2181
   if [[ $? -eq 0 ]]
   then
     tput setaf 2; echo  "Plugin dir copied"; printf '\e[m'
