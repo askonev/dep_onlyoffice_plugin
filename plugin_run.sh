@@ -22,22 +22,15 @@ shift
 
 # check .gz files in plugin
 ls ./asset/$PLUGIN_NAME/*.gz &> /dev/null
-remove_gz_in_dir $?
+remove_gz_in_dir
 
 # Copy plugins inside document server
 docker cp ./asset/$PLUGIN_NAME "$(docker-compose ps -q docserver)":$DOCSERVER_DIR_FOR_PLUGINS
-check_for_successful_copying $?
+success_check "Copying successfully"
 
 # Update docserver services
 docker-compose exec -T docserver supervisorctl restart all && \
 docker-compose exec -T docserver service nginx restart
+success_check "Plugin installed"
 
-# shellcheck disable=SC2181
-if [ $? -eq 0 ]; then
-  tput setaf 2; echo "Plugin is installed"; printf '\e[m' # colorize log green
-
-  google-chrome --incognito --new-window http://"$HOST_IP":6060/example/ &> /dev/null
-else
-  tput setaf 1; echo  "Error when updating services"; printf '\e[m'  # colorize log red
-  exit 1
-fi
+google-chrome --incognito --new-window http://"$HOST_IP":6060/example/ &> /dev/null

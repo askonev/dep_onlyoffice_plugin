@@ -22,14 +22,14 @@ function start_document_server_example {
 
 }
 
-function check_for_successful_copying {
+function success_check {
 
   # shellcheck disable=SC2181
   if [[ $? -eq 0 ]]
   then
-    tput setaf 2; echo  "Plugin dir copied"; printf '\e[m'
+    tput setaf 2; echo  "$1"; printf '\e[m' # green colorized
   else
-    tput setaf 1; echo  "Docker container doesn't exist."; printf '\e[m'
+    tput setaf 1; echo  "Execution error. Exit 1"; printf '\e[m' # red colorized
     exit 1
   fi
 
