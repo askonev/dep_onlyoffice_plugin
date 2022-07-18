@@ -22,7 +22,7 @@ Bash script for installing and updating the plugin into the document server
    or use the script
 
    ```bash
-    lib/cloning_plugin.sh
+    lib/plugin_cloning.sh
    ```
 
    Add the name of the plugin of interest as the value of the variable `$PLUGIN_NAME`

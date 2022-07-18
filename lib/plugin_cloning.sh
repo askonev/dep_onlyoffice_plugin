@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PLUGIN_NAME="helloworld"
-DS_PLUGINS_DIR="../asset"
+ASSERT_FOLDER="../asset" #
 
 function cloning_plugin {
 
@@ -19,4 +19,4 @@ rm -rf "$TMP_PLUGINS_DIR"
 
 }
 
-cloning_plugin "$PLUGIN_NAME" "$DS_PLUGINS_DIR"
+cloning_plugin "$PLUGIN_NAME" "$ASSERT_FOLDER"
