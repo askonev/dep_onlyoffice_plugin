@@ -43,3 +43,13 @@ function get_host_ip {
         grep -Eo '192.([0-9]*\.){2}([0-9]{3,})'
 
 }
+
+function log_cleaner {
+
+  LOG_FOLDER="$(pwd)/documentserver_log"
+  sudo rm -r "$LOG_FOLDER/data" \
+             "$LOG_FOLDER/db" \
+             "$LOG_FOLDER/lib" \
+             "$LOG_FOLDER/logs"
+
+}

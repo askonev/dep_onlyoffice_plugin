@@ -11,6 +11,7 @@ HOST_IP=$(get_host_ip)
 # if "case" = "param" then used corresponding code of block
 case "$1" in
 --docker)
+  log_cleaner
   # start with onlyoffice docker
   docker-compose up -d docserver
   stopwatcher 120
