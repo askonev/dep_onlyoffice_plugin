@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PLUGIN_NAME="helloworld"
-ASSERT_FOLDER="../asset" #
+ASSERT_FOLDER="$(pwd)/../asset" #
 
 function cloning_plugin {
 
