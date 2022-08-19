@@ -1,6 +1,6 @@
 # deployment_onlyoffice-plugins
 
-Bash script for installing and updating the plugin into the document server
+Bash script for installing or updating current plugin into the document server
 
 ## Dependencies
 
@@ -16,14 +16,16 @@ Bash script for installing and updating the plugin into the document server
 2. Install the folder with the plugin in the directory
    
    ```bash
-   ./asset
+    ./asset
    ```
-   
+
    or use the script
 
+   >Plugin must be contained in the project [sdkjs_plugins](https://github.com/ONLYOFFICE/sdkjs-plugins)
+
    ```bash
-    lib/plugin_cloning.sh
-   ```
+    ./lib/plugin_cloning.sh [PLUGIN NAME]
+   ``` 
 
    Add the name of the plugin of interest as the value of the variable `$PLUGIN_NAME`
 
@@ -32,11 +34,11 @@ Bash script for installing and updating the plugin into the document server
 4. To install the plugin and start the document server, use the --docker flag
 
    ```bash
-   ./plugin_run.sh --docker
+    ./plugin_run.sh --docker
    ```
 
 5. To update the plugin, run the start.sh script without parameters
 
    ```bash
-     ./plugin_run.sh
+    ./plugin_run.sh
    ```
