@@ -5,7 +5,7 @@ source lib/plugin_starter_helper.sh
 
 PLUGIN_NAME=helloworld
 
-DOCSERVER_DIR_FOR_PLUGINS=/var/www/onlyoffice/documentserver/sdkjs-plugins/
+DS_PLUGINS_DIR=/var/www/onlyoffice/documentserver/sdkjs-plugins/
 HOST_IP=$(get_host_ip)
 
 # if "case" = "param" then used corresponding code of block
@@ -26,7 +26,7 @@ ls ./asset/$PLUGIN_NAME/*.gz &> /dev/null
 remove_gz_in_dir
 
 # Copy plugins inside document server
-docker cp ./asset/$PLUGIN_NAME "$(docker-compose ps -q docserver)":$DOCSERVER_DIR_FOR_PLUGINS
+docker cp ./asset/$PLUGIN_NAME "$(docker-compose ps -q docserver)":$DS_PLUGINS_DIR
 success_check "Copying successfully"
 
 # Update docserver services
