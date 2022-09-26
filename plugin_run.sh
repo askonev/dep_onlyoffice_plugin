@@ -3,7 +3,7 @@
 source lib/stopwatcher.sh
 source lib/plugin_starter_helper.sh
 
-PLUGIN_NAME=helloworld
+PLUGIN_NAME=updateContentControl
 
 DS_PLUGINS_DIR=/var/www/onlyoffice/documentserver/sdkjs-plugins/
 HOST_IP=$(get_host_ip)
