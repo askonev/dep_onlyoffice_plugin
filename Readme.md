@@ -29,16 +29,16 @@ Bash script for installing or updating current plugin into the document server
 
    Add the name of the plugin of interest as the value of the variable `$PLUGIN_NAME`
 
-3. In the file *./plugin_run.sh* change the value of the variable `$PLUGIN_NAME`
+3. In the file *./plugin_run* change the value of the variable `$PLUGIN_NAME`
 
 4. To install the plugin and start the document server, use the --docker flag
 
    ```bash
-    ./plugin_run.sh --docker
+    ./plugin_run --docker
    ```
 
 5. To update the plugin, run the start.sh script without parameters
 
    ```bash
-    ./plugin_run.sh
+    ./plugin_run
    ```
