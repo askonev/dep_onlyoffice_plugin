@@ -7,7 +7,7 @@ function stopwatcher() {
   now=$(date +%s)sec
   while [ $i -le $end ]
    do
-       printf "%s\r" $(TZ=UTC date --date now-$now +%H:%M:%S.%N)
+       printf "%s\r" $(TZ=UTC date --date now-$now +_stopwatcher_%M:%S.%N)
        sleep 0.1
        i=$(( i + 1 ))
   done
