@@ -6,12 +6,13 @@ source lib/plugin_starter_helper.sh
 PLUGIN_NAME=helloworld
 
 DS_PLUGINS_DIR=/var/www/onlyoffice/documentserver/sdkjs-plugins/
-HOST_IP=$(get_host_ip)
+
+_grep_ip
 
 # if "case" = "param" then used corresponding code of block
 case "$1" in
 --docker)
-  log_cleaner
+  _log_cleaner
   # start with onlyoffice docker
   docker-compose up -d docserver
   stopwatcher 120
