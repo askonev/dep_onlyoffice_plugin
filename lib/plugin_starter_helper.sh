@@ -34,7 +34,7 @@ function _grep_ip {
 HOST_IP=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | \
           grep -Eo '([0-9]*\.){3}[0-9]*' | \
           grep -v '127.0.0.1' | \
-          grep -Eo '192.([0-9]*\.){2}([0-9]{1,3})')
+          grep -Eo '192.([0-9]*\.){2}([0-9]{2,3})')
 if [ $HOST_IP ]
 then
   tput setaf 2; echo  "IP $HOST_IP grepped"; printf '\e[m' # green colorized
