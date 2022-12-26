@@ -55,8 +55,8 @@ fi
 
 function _log_cleaner {
   LOG_FOLDER="$(pwd)/documentserver_log"
-  sudo rm -r $LOG_FOLDER/data/* \
-             $LOG_FOLDER/db/* \
-             $LOG_FOLDER/lib/* \
-             $LOG_FOLDER/logs/*
+  sudo rm -r $LOG_FOLDER/data \
+             $LOG_FOLDER/db \
+             $LOG_FOLDER/lib \
+             $LOG_FOLDER/logs
 }
