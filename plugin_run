@@ -31,7 +31,7 @@ docker cp ./asset/$PLUGIN_NAME "$(docker-compose ps -q docserver)":$DS_PLUGINS_D
 success_check "Copying successfully"
 
 # Update docserver services
-docker-compose exec -T docserver supervisorctl restart all && \
+docker-compose exec -T docserver supervisorctl restart all
 docker-compose exec -T docserver service nginx restart
 success_check "Plugin installed"
 
