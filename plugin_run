@@ -11,7 +11,7 @@ _grep_ip
 
 # if "case" = "param" then used corresponding code of block
 case "$1" in
---docker)
+--ds)
   _log_cleaner
   # start with onlyoffice docker
   docker-compose up -d docserver
