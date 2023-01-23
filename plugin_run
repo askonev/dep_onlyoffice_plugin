@@ -1,18 +1,23 @@
 #!/bin/bash
 
+source .env
 source lib/stopwatcher.sh
 source lib/plugin_starter_helper.sh
 
+
 PLUGIN_NAME=helloworld
 
+
+# Static data
 DS_PLUGINS_DIR=/var/www/onlyoffice/documentserver/sdkjs-plugins/
 
+# Dynamic data
 _grep_ip
 
 # if "case" = "param" then used corresponding code of block
 case "$1" in
 --ds)
-  _log_cleaner
+  _remove_logs $LOGS_DIR
   # start with onlyoffice docker
   docker-compose up -d docserver
   stopwatcher 120

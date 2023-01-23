@@ -53,10 +53,8 @@ else
 fi
 }
 
-function _log_cleaner {
-  LOG_FOLDER="$(pwd)/documentserver_log"
-  sudo rm -r $LOG_FOLDER/data \
-             $LOG_FOLDER/db \
-             $LOG_FOLDER/lib \
-             $LOG_FOLDER/logs
+function _remove_logs() {
+  echo "logs dir: $1"
+  sudo rm -r $1/*
+  shift
 }
