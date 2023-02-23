@@ -31,10 +31,10 @@ Bash script for installing or updating current plugin into the document server
 
 3. In the file *./plugin_run* change the value of the variable `$PLUGIN_NAME`
 
-4. To install the plugin and start the document server, use the --docker flag
+4. To install the plugin and start the document server, use the --ds flag
 
    ```bash
-    ./plugin_run --docker
+    ./plugin_run --ds
    ```
 
 5. To update the plugin, run the start.sh script without parameters

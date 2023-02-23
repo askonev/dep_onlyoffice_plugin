@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function remove_gz_in_dir {
+function remove_gz_in_dir() {
   if [ $? -eq 2 ]; then
       tput setaf 3; echo  "*.gz deleted"; printf '\e[m'
   else
@@ -18,7 +18,7 @@ function start_document_server_example {
     docker-compose exec docserver sudo sed 's,autostart=false,autostart=true,' -i /etc/supervisor/conf.d/ds-example.conf
 }
 
-function success_check {
+function success_check() {
   # shellcheck disable=SC2181
   if [[ $? -eq 0 ]]
   then
@@ -53,10 +53,8 @@ else
 fi
 }
 
-function _log_cleaner {
-  LOG_FOLDER="$(pwd)/documentserver_log"
-  sudo rm -r $LOG_FOLDER/data \
-             $LOG_FOLDER/db \
-             $LOG_FOLDER/lib \
-             $LOG_FOLDER/logs
+function _remove_logs() {
+  echo "logs dir: $1"
+  sudo rm -r $1/*
+  shift
 }

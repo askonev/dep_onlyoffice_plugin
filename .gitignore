@@ -1,4 +1,5 @@
-/archive
-/.idea
-/asset
-documentserver_log
+archive
+.idea
+asset
+ds_logs
+lic

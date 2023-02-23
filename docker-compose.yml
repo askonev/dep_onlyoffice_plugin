@@ -1,11 +1,11 @@
-version: '3.9'
+version: '3'
 services:
   docserver:
     image: onlyoffice/4testing-documentserver-ee:${DOCSERVER_VERSION}
     volumes:
-      - ${LOG}/logs:/var/log/onlyoffice
-      - ${LOG}/data:/var/www/onlyoffice/Data
-      - ${LOG}/lib:/var/lib/onlyoffice
-      - ${LOG}/db:/var/lib/postgresql
+      - ${LOGS_DIR}/logs:/var/log/onlyoffice
+      - ${LOGS_DIR}/data:/var/www/onlyoffice/Data
+      - ${LOGS_DIR}/lib:/var/lib/onlyoffice
+      - ${LOGS_DIR}/db:/var/lib/postgresql
     ports:
       - "6060:80"
