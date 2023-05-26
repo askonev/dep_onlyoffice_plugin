@@ -28,15 +28,19 @@ esac
 shift
 
 # check .gz files in plugin
-ls ./asset/$PLUGIN_NAME/*.gz &> /dev/null
-remove_gz_in_dir
+# отошли от схемы с кешированием в
+# TODO: но после перезагрузки все равно кеширует
+#ls ./asset/$PLUGIN_NAME/*.gz &> /dev/null
+#remove_gz_in_dir
 
 # Copy plugins inside document server
 docker cp ./asset/$PLUGIN_NAME "$(docker-compose ps -q docserver)":$DS_PLUGINS_DIR
 success_check "Copying successfully"
 
 # Update docserver services
-docker-compose exec -T docserver supervisorctl restart all
+# docker-compose exec -T docserver supervisorctl restart all
+# TODO: необходимо при первой загрузке плагина (выяснить)
+docker-compose exec -T docserver supervisorctl restart ds:docservice
 docker-compose exec -T docserver service nginx restart
 success_check "Plugin installed"
 
