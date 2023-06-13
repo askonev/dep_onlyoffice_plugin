@@ -34,11 +34,11 @@ Bash script for installing or updating current plugin into the document server
 4. To install the plugin and start the document server, use the --ds flag
 
    ```bash
-    ./plugin_run --ds
+    ./plugin_run.sh --ds
    ```
 
 5. To update the plugin, run the start.sh script without parameters
 
    ```bash
-    ./plugin_run
+    ./plugin_run.sh
    ```
