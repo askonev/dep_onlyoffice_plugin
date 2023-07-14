@@ -31,23 +31,19 @@ function success_check() {
 
 function _grep_ip {
 # Searches ip over network 192.*.*.*
-HOST_IP=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | \
-          grep -Eo '([0-9]*\.){3}[0-9]*' | \
-          grep -v '127.0.0.1' | \
-          grep -Eo '192.([0-9]*\.){2}([0-9]{2,3})')
+HOST_IP=$(ifconfig | grep -A2 tun0 | grep -oP '(?<=inet )([0-9]*\.){3}[0-9]*' \
+      || ifconfig | grep -A2 wlp3s0 | grep -oP '(?<=inet )([0-9]*\.){3}[0-9]*')
 if [ $HOST_IP ]
 then
   tput setaf 2; echo  "IP $HOST_IP grepped"; printf '\e[m' # green colorized
-else
-  # Searches ip from the network 172.*.*.* and by wlp3s0
-  HOST_IP=$(ifconfig | grep -A 1 wlp3s0 | \
-                      grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | \
-                      grep -Eo '172.([0-9]*\.){2}([0-9]{1,3})')
+else # Searches ip from the network 172.*.*.*
+  HOST_IP=$(ifconfig | grep -A2 tun0 | grep -oP '(?<=inet )172.([0-9]*\.){2}([0-9]{1,3})' \
+                  || ifconfig | grep -A2 wlp3s0 | grep -oP '(?<=inet )172.([0-9]*\.){2}([0-9]{1,3})')
   if [ $HOST_IP ]
   then
-    tput setaf 2; echo  "IP $HOST_IP grepped"; printf '\e[m' # green colorized
+    tput setaf 2; echo  "ip: $HOST_IP"; printf '\e[m' # green colorized
   else
-    tput setaf 1; echo  "Error searching for IP. Exit 1"; printf '\e[m' # red colorized
+    tput setaf 1; echo  "Error searching for ip address. Exit 1"; printf '\e[m' # red colorized
     exit 1
   fi
 fi
