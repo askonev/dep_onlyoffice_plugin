@@ -37,7 +37,7 @@ if [ $HOST_IP ]
 then
   tput setaf 2; echo  "IP $HOST_IP grepped"; printf '\e[m' # green colorized
 else # Searches ip from the network 172.*.*.*
-  HOST_IP=$(ifconfig | grep -A2 tun0 | grep -oP '(?<=inet )172.([0-9]*\.){2}([0-9]{1,3})' \
+  HOST_IP=$(ifconfig | grep -A2 enp2s0 | grep -oP '(?<=inet )172.([0-9]*\.){2}([0-9]{1,3})' \
                   || ifconfig | grep -A2 wlp3s0 | grep -oP '(?<=inet )172.([0-9]*\.){2}([0-9]{1,3})')
   if [ $HOST_IP ]
   then
