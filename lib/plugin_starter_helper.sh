@@ -31,8 +31,9 @@ function success_check() {
 
 function _grep_ip {
 # Searches ip over network 192.*.*.*
-HOST_IP=$(ifconfig | grep -A2 tun0 | grep -oP '(?<=inet )([0-9]*\.){3}[0-9]*' \
-      || ifconfig | grep -A2 wlp3s0 | grep -oP '(?<=inet )([0-9]*\.){3}[0-9]*')
+HOST_IP=$(ifconfig | grep -A2 wlp3s0 | grep -oP '(?<=inet )([0-9]*\.){3}[0-9]*' \
+      || ifconfig | grep -A2 tun0 | grep -oP '(?<=inet )([0-9]*\.){3}[0-9]*')
+
 if [ $HOST_IP ]
 then
   tput setaf 2; echo  "IP $HOST_IP grepped"; printf '\e[m' # green colorized
