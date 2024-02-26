@@ -30,11 +30,11 @@ shift
 # check .gz files in plugin
 # отошли от схемы с кешированием в
 # TODO: но после перезагрузки все равно кеширует
-#ls ./asset/$PLUGIN_NAME/*.gz &> /dev/null
+#ls ./assets/$PLUGIN_NAME/*.gz &> /dev/null
 #remove_gz_in_dir
 
 # Copy plugins inside document server
-docker cp ./asset/$PLUGIN_NAME "$(docker-compose ps -q docserver)":$DS_PLUGINS_DIR
+docker cp ./assets/$PLUGIN_NAME "$(docker-compose ps -q docserver)":$DS_PLUGINS_DIR
 success_check "Copying successfully"
 
 # Update docserver services
