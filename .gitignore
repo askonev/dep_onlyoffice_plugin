@@ -1,5 +1,7 @@
-archive
+.env
 .idea
+
+lic
 asset
 ds_logs
-lic
+archive
