@@ -44,4 +44,7 @@ docker-compose exec -T docserver supervisorctl restart ds:docservice
 docker-compose exec -T docserver service nginx restart
 success_check "Plugin installed"
 
-google-chrome --incognito --new-window http://"$HOST_IP":6060/example/ &> /dev/null
+google-chrome --incognito \
+              --new-window \
+              --auto-open-devtools-for-tabs \
+              http://"$HOST_IP":6060/example/ &> /dev/null
