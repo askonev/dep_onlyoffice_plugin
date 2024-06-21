@@ -1,4 +1,3 @@
-version: '3'
 services:
   docserver:
     image: onlyoffice/4testing-documentserver-ee:${DOCSERVER_VERSION}
