@@ -19,7 +19,7 @@ case "$1" in
 --ds)
   _remove_logs $LOGS_DIR
   # start with onlyoffice docker
-  docker-compose up -d docserver
+  docker compose up -d docserver
   stopwatcher 80
   start_document_server_example
 ;;
