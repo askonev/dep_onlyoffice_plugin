@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PLUGIN_NAME=$1
-ASSET_DIR="$(pwd)/asset"
+ASSET_DIR="$(pwd)/assets"
 
 echo $PLUGIN_NAME
 echo $ASSET_DIR
