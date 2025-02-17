@@ -9,7 +9,7 @@ PLUGIN_NAME=helloworld
 
 
 # Static data
-DS_PLUGINS_DIR=/var/www/onlyoffice/documentserver/sdkjs-plugins/
+DS_PLUGINS_DIR=/var/www/onlyoffice/documentserver/sdkjs-plugins
 
 # Dynamic data
 _grep_ip
@@ -33,12 +33,12 @@ shift
 # ls ./assets/$PLUGIN_NAME/*.gz &> /dev/null
 # remove_gz_in_dir
 
-docker-compose exec -T docserver ls $DS_PLUGINS_DIR
+docker-compose exec -T docserver ls "$DS_PLUGINS_DIR"
 # remove plugin folder if exist
-docker-compose exec -T docserver rm -r $DS_PLUGINS_DIR$PLUGIN_NAME
+docker-compose exec -T docserver rm -r "$DS_PLUGINS_DIR/$PLUGIN_NAME"
 
-# Copy plugins inside document server
-docker cp ./assets/$PLUGIN_NAME "$(docker-compose ps -q docserver)":$DS_PLUGINS_DIR
+# # Copy plugins inside document server
+docker cp "./assets/$PLUGIN_NAME" "$(docker-compose ps -q docserver)":$DS_PLUGINS_DIR
 success_check "Copying successfully"
 
 # Update docserver services
